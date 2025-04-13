@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoodBridge - Connect Food Donors to NGOs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">
+      <h1><i class="fas fa-utensils"></i> FoodBridge</h1>
+      <p>Connecting Food Surplus to Hunger</p>
+    </div>
+    <nav class="main-nav">
+      <a href="#donate"><i class="fas fa-donate"></i> Donate</a>
+      <a href="#request"><i class="fas fa-hands-helping"></i> Request</a>
+      <a href="#stats"><i class="fas fa-chart-line"></i> Impact</a>
+      <a href="#map"><i class="fas fa-map-marker-alt"></i> Map</a>
+    </nav>
+  </header>
+
+  <section class="banner">
+    <div class="banner-content">
+      <h1>Fight Hunger, Reduce Waste</h1>
+      <p>Connecting restaurants with surplus food to NGOs that feed the hungry</p>
+      <div class="banner-buttons">
+        <button class="btn donate-btn" onclick="showForm('donateForm')">Donate Food</button>
+        <button class="btn request-btn" onclick="showForm('requestForm')">Request Food</button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div id="map"></div>
+
+    <section id="stats" class="stats">
+      <h2>Our Impact</h2>
+      <div class="stats-box">
+        <div class="stat">
+          <div class="number" id="meals">0</div>
+          <div class="label">Meals Shared</div>
+        </div>
+        <div class="stat">
+          <div class="number" id="donors">0</div>
+          <div class="label">Food Donors</div>
+        </div>
+        <div class="stat">
+          <div class="number" id="ngos">0</div>
+          <div class="label">Partner NGOs</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Request Form -->
+  <div id="requestForm" class="popup-form hidden">
+    <div class="form-head">
+      <h3><i class="fas fa-hands-helping"></i> Request Food</h3>
+      <button class="close-btn" onclick="hideForm('requestForm')">&times;</button>
+    </div>
+    <input type="text" id="orgName" placeholder="Organization Name" required>
+    <input type="text" id="location" placeholder="Your Location" required>
+    <button class="btn request-btn" onclick="foodBridge.submitRequest()">Submit Request</button>
+    <p id="requestMsg"></p>
+  </div>
+
+  <!-- Donate Form -->
+  <div id="donateForm" class="popup-form hidden">
+    <div class="form-head">
+      <h3><i class="fas fa-donate"></i> Donate Food</h3>
+      <button class="close-btn" onclick="hideForm('donateForm')">&times;</button>
+    </div>
+    <input type="text" id="donor" placeholder="Your Name/Organization" required>
+    <input type="text" id="food" placeholder="Type of Food" required>
+    <input type="number" id="amount" placeholder="Quantity (servings)" required>
+    <button class="btn donate-btn" onclick="foodBridge.submitDonation()">Submit Donation</button>
+    <p id="donateMsg"></p>
+  </div>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3><i class="fas fa-utensils"></i> FoodBridge</h3>
+        <p>Nourishing Communities, Reducing Waste</p>
+      </div>
+      <div class="footer-links">
+        <a href="#donate">Donate</a>
+        <a href="#request">Request</a>
+        <a href="#stats">Impact</a>
+        <a href="#map">Map</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 FoodBridge. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
